@@ -4,10 +4,10 @@ $(document).ready(function() {
     if (e.shiftKey) {
       e.preventDefault();
       chrome.runtime.sendMessage({method: "sendURL",
-                                  sentUrl: e.target.href }, 
+                                  sentUrl: e.currentTarget.href,
+                                  title: $(e.currentTarget).text() }, 
         function (response) {
           if (response.status === 200) {
-            debugger
             $(e.target).css("color", "green");
           }
         });
